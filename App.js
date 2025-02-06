@@ -1,6 +1,9 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 
 function App() {
+  let nome = 'Alessandro Pedroso';
+  let img = 'https://sujeitoprogramador.com/reactlogo.png';
+
   return (
     <View>
       <Text>Hello World!</Text>
@@ -8,6 +11,10 @@ function App() {
         Meu primeiro App
       </Text>
       <Text style={{fontSize: 20, colo: 'green'}}>Alessandro</Text>
+
+      <Image style={{width: 300, height: 300}} source={{uri: img}} />
+
+      <Text style={{fontSize: 20}}>{nome}</Text>
     </View>
   );
 }
