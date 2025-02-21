@@ -1,34 +1,41 @@
-import {useState} from 'react'
-import { View, Text, Image, Button } from 'react-native';
+import {useState} from 'react';
+import {View, Text, TextInput, StyleSheet} from 'react-native';
 
 function App() {
-  // let nome = 'Alessandro Pedroso';
-  // let img = 'https://sujeitoprogramador.com/reactlogo.png';
+  const [nome, setNome] = useState('');
 
-  const [nome, setNome] = useState('Alessandro')
-  const [idade, setIdade] = useState(20);
-  
-  function entrar(nome,idade) {
-    setNome(nome)
-    setIdade(idade)
+  function pegaNome(texto) {
+    if (texto.length > 0) {
+      setNome('Bem vindo ' + texto);
+    } else {
+      setNome('');
+    }
   }
 
   return (
-    <View style={{marginTop:25}}>
+    <View style={styles.container}>
+      <TextInput style={styles.input} onChangeText={text => pegaNome(text)} />
 
-      <Button title='Mudar nome' onPress={() => entrar("Alessandro Schuquel Pedroso",33)} />
-      <Text style={{ fontSize: 19 }}>{nome}</Text>
-      <Text style={{ fontSize: 17 }}>{idade }</Text>
-      {/* <Text style={{color: '#FF0000', fontSize: 25, margin: 15}}>
-        Meu primeiro App
-      </Text> */}
-      {/* <Text style={{fontSize: 20, color: 'green'}}>Alessandro</Text>
-
-      <Image style={{width: 300, height: 300}} source={{uri: img}} />
-
-      <Text style={{fontSize: 20}}>{nome}</Text> */}
+      <Text style={styles.texto}>{nome}</Text>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  input: {
+    height: 45,
+    borderWidth: 1,
+    margin: 10,
+    padding: 17,
+    fontSize: 20,
+  },
+  texto: {
+    textAlign: 'center',
+    fontSize: 25,
+  },
+});
 
 export default App;
